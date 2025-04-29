@@ -1,5 +1,6 @@
 import os
 import tensorflow as tf
+import pandas as pd
 
 flags = tf.compat.v1.flags
 flags.DEFINE_string("csv_input", "", "Path to the CSV input")
