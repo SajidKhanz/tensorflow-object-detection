@@ -1,6 +1,26 @@
-import pandas as pd 
+"""
+Usage:
+
+# Create train data:
+python generate_tfrecord.py --label=<LABEL> --csv_input=<PATH_TO_ANNOTATIONS_FOLDER>/train_labels.csv  --output_path=<PATH_TO_ANNOTATIONS_FOLDER>/train.record <PATH_TO_ANNOTATIONS_FOLDER>/label_map.pbtxt
+
+# Create test data:
+python generate_tfrecord.py --label=<LABEL> --csv_input=<PATH_TO_ANNOTATIONS_FOLDER>/test_labels.csv  --output_path=<PATH_TO_ANNOTATIONS_FOLDER>/test.record  --label_map <PATH_TO_ANNOTATIONS_FOLDER>/label_map.pbtxt
+"""
+
+from __future__ import division
+from __future__ import print_function
+from __future__ import absolute_import
+
 import os
 import tensorflow as tf
+import sys
+
+sys.path.append("../../models/research")
+
+from PIL import Image
+from object_detection.utils import dataset_util
+from collections import namedtuple, OrderedDict
 
 flags = tf.compat.v1.flags
 flags.DEFINE_string("csv_input", "", "Path to the CSV input")
@@ -45,4 +65,4 @@ def main(_):
 
 
 if __name__ == "__main__":
-    tf.compat.v1.app.run()
+    tf.app.run()
