@@ -1,3 +1,4 @@
+import os
 import tensorflow as tf
 
 flags = tf.compat.v1.flags
